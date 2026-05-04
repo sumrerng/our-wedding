@@ -938,6 +938,141 @@ button {
 }
 
 /* ============================================================
+   MUSIC PLAYER (floating vinyl)
+============================================================ */
+.music-player {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.5rem;
+  z-index: 999;
+  display: none; /* shown by JS after opening */
+}
+
+.music-player.visible {
+  display: block;
+}
+
+/* Music Notes */
+.music-notes-wrap {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 80px;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.music-note {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.9rem;
+  color: var(--gold);
+  animation: noteFloat 2.2s ease-out forwards;
+  user-select: none;
+}
+
+@keyframes noteFloat {
+  0%   { opacity: 0.9; transform: translateY(0)    scale(1)    rotate(-5deg); }
+  30%  { opacity: 1;   transform: translateY(-25px) scale(1.1)  rotate(6deg);  }
+  70%  { opacity: 0.6; transform: translateY(-55px) scale(0.95) rotate(-4deg); }
+  100% { opacity: 0;   transform: translateY(-80px) scale(0.7)  rotate(8deg);  }
+}
+
+/* Vinyl Button */
+.music-btn {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--brown);
+  border: 2px solid var(--gold);
+  box-shadow: 0 6px 24px rgba(74, 55, 40, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow var(--ease), transform var(--ease);
+}
+
+.music-btn:hover {
+  box-shadow: 0 8px 32px rgba(201, 169, 110, 0.4);
+  transform: scale(1.06);
+}
+
+.music-btn:active {
+  transform: scale(0.96);
+}
+
+/* Vinyl Disc */
+.music-vinyl {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1a1008 0%, #2a1e12 30%, #1a1008 50%, #2a1e12 70%, #0e0a04 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-vinyl.spinning {
+  animation: vinylSpin 2.4s linear infinite;
+}
+
+@keyframes vinylSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.music-vinyl__groove {
+  position: absolute;
+  border-radius: 50%;
+  border: 0.5px solid rgba(201, 169, 110, 0.18);
+}
+
+.music-vinyl__groove--1 { width: 80%; height: 80%; }
+.music-vinyl__groove--2 { width: 60%; height: 60%; }
+.music-vinyl__groove--3 { width: 40%; height: 40%; }
+
+.music-vinyl__center {
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold) 0%, var(--gold-dark) 100%);
+  box-shadow: 0 0 6px rgba(201, 169, 110, 0.5);
+  z-index: 1;
+}
+
+/* Status icon overlay */
+.music-btn__status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: rgba(74, 55, 40, 0.6);
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.music-btn:hover .music-btn__status {
+  opacity: 1;
+}
+
+/* When paused — always show icon */
+.music-btn.paused .music-btn__status {
+  opacity: 1;
+  background: rgba(74, 55, 40, 0.75);
+}
+
+/* ============================================================
    SWEETALERT2 CUSTOMISATION
 ============================================================ */
 .swal2-popup.swal-wedding {

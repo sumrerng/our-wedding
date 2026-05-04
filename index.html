@@ -354,6 +354,25 @@
 
   </div><!-- /#main -->
 
+  <!-- ── Background Music ── -->
+  <audio id="bgMusic" loop preload="none">
+    <source src="./music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ── Floating Music Player ── -->
+  <div class="music-player" id="musicPlayer">
+    <div class="music-notes-wrap" id="musicNotesWrap" aria-hidden="true"></div>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="เปิด/ปิดเพลงประกอบ" title="เปิด/ปิดเพลง">
+      <div class="music-vinyl" id="musicVinyl">
+        <div class="music-vinyl__groove music-vinyl__groove--1"></div>
+        <div class="music-vinyl__groove music-vinyl__groove--2"></div>
+        <div class="music-vinyl__groove music-vinyl__groove--3"></div>
+        <div class="music-vinyl__center"></div>
+      </div>
+      <span class="music-btn__status" id="musicStatus">♪</span>
+    </button>
+  </div>
+
   <!-- ── Scripts ── -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

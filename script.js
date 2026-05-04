@@ -1,4 +1,85 @@
 /* ============================================================
+   MUSIC PLAYER
+============================================================ */
+var musicPlaying   = false;
+var noteInterval   = null;
+var noteSymbols    = ['♩', '♪', '♫', '♬', '𝅘𝅥𝅮'];
+
+function initMusic() {
+  var player = document.getElementById('musicPlayer');
+  if (player) player.classList.add('visible');
+
+  var audio = document.getElementById('bgMusic');
+  if (!audio) return;
+
+  audio.volume = 0.45;
+  audio.play().then(function () {
+    setMusicPlaying(true);
+  }).catch(function () {
+    // Autoplay blocked — show paused state, wait for user tap
+    setMusicPlaying(false);
+  });
+}
+
+function toggleMusic() {
+  var audio = document.getElementById('bgMusic');
+  if (!audio) return;
+
+  if (musicPlaying) {
+    audio.pause();
+    setMusicPlaying(false);
+  } else {
+    audio.play().then(function () {
+      setMusicPlaying(true);
+    });
+  }
+}
+
+function setMusicPlaying(state) {
+  musicPlaying = state;
+  var vinyl  = document.getElementById('musicVinyl');
+  var btn    = document.getElementById('musicBtn');
+  var status = document.getElementById('musicStatus');
+
+  if (state) {
+    vinyl  && vinyl.classList.add('spinning');
+    btn    && btn.classList.remove('paused');
+    status && (status.textContent = '⏸');
+    startNotes();
+  } else {
+    vinyl  && vinyl.classList.remove('spinning');
+    btn    && btn.classList.add('paused');
+    status && (status.textContent = '▶');
+    stopNotes();
+  }
+}
+
+function startNotes() {
+  stopNotes();
+  noteInterval = setInterval(spawnNote, 900);
+}
+
+function stopNotes() {
+  if (noteInterval) { clearInterval(noteInterval); noteInterval = null; }
+}
+
+function spawnNote() {
+  var wrap = document.getElementById('musicNotesWrap');
+  if (!wrap) return;
+
+  var note       = document.createElement('span');
+  note.className = 'music-note';
+  note.textContent = noteSymbols[Math.floor(Math.random() * noteSymbols.length)];
+  note.style.left = (10 + Math.random() * 40) + 'px';
+  note.style.animationDuration = (1.6 + Math.random() * 0.8) + 's';
+  note.style.fontSize = (0.7 + Math.random() * 0.55) + 'rem';
+  wrap.appendChild(note);
+
+  // Remove after animation ends
+  note.addEventListener('animationend', function () { note.remove(); });
+}
+
+/* ============================================================
    OPENING SCREEN — Curtain open + reveal main content
 ============================================================ */
 document.getElementById('openCard').addEventListener('click', function () {
@@ -31,6 +112,7 @@ document.getElementById('openCard').addEventListener('click', function () {
 
     startCountdown();
     createPetals();
+    initMusic();
   }, 1450);
 });
 
