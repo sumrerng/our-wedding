@@ -107,6 +107,56 @@ function startCountdown() {
 }
 
 /* ============================================================
+   RSVP FORM SUBMIT — SweetAlert2
+============================================================ */
+function submitRSVP(e) {
+  e.preventDefault();
+
+  const form    = document.getElementById('rsvpForm');
+  const name    = document.getElementById('rsvp-name').value.trim();
+  const attend  = document.getElementById('rsvp-attend').value;
+  const guests  = document.getElementById('rsvp-guests').value;
+  const message = document.getElementById('rsvp-msg').value.trim();
+
+  if (!name || !attend) return;
+
+  const isAttending = attend === 'yes';
+
+  Swal.fire({
+    title: isAttending ? '🎉 ขอบคุณมากเลย!' : '💌 ขอบคุณที่แจ้งให้ทราบ',
+    html: isAttending
+      ? [
+          '<p style="font-family:\'Sarabun\',sans-serif;font-size:0.92rem;color:#6b5244;line-height:1.9">',
+            '<strong style="color:#4a3728">', name, '</strong><br/>',
+            'ยืนยันร่วมงาน <strong style="color:#c9a96e">', guests, ' ท่าน</strong><br/>',
+            'เราดีใจที่จะได้พบคุณในงาน ✨',
+            message ? '<br/><br/><em style="color:#9a7a45;font-family:\'Cormorant Garamond\',serif;font-size:1rem">"' + message + '"</em>' : '',
+          '</p>',
+        ].join('')
+      : [
+          '<p style="font-family:\'Sarabun\',sans-serif;font-size:0.92rem;color:#6b5244;line-height:1.9">',
+            '<strong style="color:#4a3728">', name, '</strong><br/>',
+            'ขอบคุณที่แจ้งให้ทราบ เราเข้าใจนะคะ/ครับ 🙏<br/>',
+            'หวังว่าจะมีโอกาสพบกันในโอกาสอื่น',
+          '</p>',
+        ].join(''),
+
+    confirmButtonText  : 'ขอบคุณ 🙏',
+    confirmButtonColor : '#4a3728',
+    background         : '#fdf6ec',
+    showCloseButton    : true,
+    width              : '340px',
+    customClass: {
+      popup         : 'swal-wedding',
+      title         : 'swal-wedding-title',
+      confirmButton : 'swal-wedding-btn',
+    },
+  }).then(function () {
+    form.reset();
+  });
+}
+
+/* ============================================================
    QR CODE POPUP — SweetAlert2
 ============================================================ */
 function showQRCode() {
