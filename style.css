@@ -227,7 +227,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url('./images/hero.jpg') center center / cover no-repeat;
+  background: url('./images/DSC01005 (1).jpg') center center / cover no-repeat;
   background-color: var(--brown-mid); /* fallback when image missing */
   text-align: center;
   padding: 3rem 1.5rem 5rem;
@@ -527,16 +527,22 @@ button {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.65rem;
-  max-width: 900px;
+  gap: 0.85rem;
+  max-width: 1060px;
   margin: 0 auto;
 }
 
 .gallery-item {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 2 / 3;
   background: var(--rose-light);
+  box-shadow: 0 10px 26px rgba(74, 55, 40, 0.08);
+}
+
+.gallery-item:first-child,
+.gallery-item:nth-child(6) {
+  grid-column: span 2;
 }
 
 .gallery-item img {
