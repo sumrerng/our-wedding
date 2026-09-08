@@ -1680,6 +1680,260 @@ body {
 }
 
 /* ============================================================
+   CINEMATIC LOVE / TIME THEME
+============================================================ */
+.cinematic-theme {
+  --film-night: #18242a;
+  --film-night-deep: #10191e;
+  --film-paper: #f1eee6;
+  --film-paper-dark: #d8d7cd;
+  --film-copper: #bd906b;
+  --film-copper-light: #e0c2a2;
+  --film-ink: #243237;
+  background: var(--film-paper);
+  color: var(--film-ink);
+}
+
+.cinematic-theme .site-nav {
+  color: var(--film-paper);
+}
+
+.cinematic-theme .site-nav__brand span,
+.cinematic-theme .site-nav__links a:hover {
+  color: var(--film-copper-light);
+}
+
+.cinematic-theme .site-nav__rsvp {
+  border-color: rgba(224, 194, 162, 0.62);
+}
+
+.cinematic-theme .hero {
+  background-position: center 30%;
+  background-color: var(--film-night);
+  isolation: isolate;
+}
+
+.cinematic-theme .hero::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(224, 194, 162, 0.8) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 73% 22%, rgba(224, 194, 162, 0.55) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 86% 68%, rgba(224, 194, 162, 0.55) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 42% 74%, rgba(224, 194, 162, 0.45) 0 1px, transparent 1.5px);
+  background-size: 220px 180px, 310px 260px, 270px 220px, 360px 300px;
+  pointer-events: none;
+}
+
+.cinematic-theme .hero::after {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(16, 25, 30, 0.9), rgba(24, 36, 42, 0.28) 72%), linear-gradient(0deg, rgba(16, 25, 30, 0.8), transparent 60%);
+}
+
+.cinematic-theme .hero__overlay {
+  z-index: 1;
+  background: linear-gradient(110deg, rgba(16, 25, 30, 0.15), transparent 65%);
+}
+
+.cinematic-theme .hero__content {
+  border-left: 1px solid rgba(224, 194, 162, 0.7);
+  padding-left: clamp(1rem, 2vw, 1.6rem);
+}
+
+.cinematic-theme .hero__label {
+  border-bottom-color: rgba(224, 194, 162, 0.7);
+  color: var(--film-copper-light);
+  letter-spacing: 0.24em;
+}
+
+.cinematic-theme .hero__divider span:not(.hero__divider-icon) {
+  background: var(--film-copper-light);
+}
+
+.cinematic-theme .hero__divider-icon,
+.cinematic-theme .hero__amp,
+.cinematic-theme .hero__surname,
+.cinematic-theme .hero__date {
+  color: var(--film-copper-light);
+}
+
+.cinematic-theme .hero__name {
+  background: linear-gradient(120deg, var(--film-paper) 10%, var(--film-copper-light) 85%);
+  background-clip: text;
+}
+
+.cinematic-theme .hero__scroll-line {
+  background: linear-gradient(to bottom, transparent, var(--film-copper-light));
+}
+
+.cinematic-theme .story-intro,
+.cinematic-theme .countdown-section,
+.cinematic-theme .location-section {
+  background: var(--film-paper);
+}
+
+.cinematic-theme .story-intro__image {
+  box-shadow: 18px 18px 0 rgba(24, 36, 42, 0.1);
+}
+
+.cinematic-theme .story-intro__image::before {
+  color: var(--film-paper);
+  content: '01 / 03';
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+}
+
+.cinematic-theme .story-intro__copy .section-label,
+.cinematic-theme .section-label {
+  color: var(--film-copper);
+}
+
+.cinematic-theme .story-intro__copy h2,
+.cinematic-theme .section-title {
+  color: var(--film-ink);
+}
+
+.cinematic-theme .story-intro__mark {
+  color: var(--film-copper);
+}
+
+.cinematic-theme .countdown-section {
+  border-top: 1px solid rgba(36, 50, 55, 0.12);
+  border-bottom: 1px solid rgba(36, 50, 55, 0.12);
+}
+
+.cinematic-theme .countdown-section::before {
+  content: 'A MOMENT IN TIME';
+  display: block;
+  margin-bottom: 1.3rem;
+  color: var(--film-copper);
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+}
+
+.cinematic-theme .countdown-section::after {
+  color: rgba(189, 144, 107, 0.18);
+  content: '14.11';
+}
+
+.cinematic-theme .countdown__box {
+  border-top-color: var(--film-copper);
+}
+
+.cinematic-theme .countdown__num {
+  color: var(--film-ink);
+}
+
+.cinematic-theme .countdown__sep {
+  color: var(--film-copper);
+}
+
+.cinematic-theme .details-section {
+  background: var(--film-night);
+  color: var(--film-paper);
+}
+
+.cinematic-theme .details-section .section-label {
+  color: var(--film-copper-light);
+}
+
+.cinematic-theme .details-section .section-title {
+  color: var(--film-paper);
+}
+
+.cinematic-theme .details-grid {
+  background: rgba(224, 194, 162, 0.3);
+}
+
+.cinematic-theme .detail-card {
+  background: var(--film-night);
+}
+
+.cinematic-theme .detail-card:hover {
+  background: #213139;
+}
+
+.cinematic-theme .detail-card__title {
+  color: var(--film-copper-light);
+}
+
+.cinematic-theme .gallery-section {
+  background: var(--film-paper-dark);
+}
+
+.cinematic-theme .gallery-section::after {
+  content: 'THE BEGINNING OF FOREVER';
+  display: block;
+  max-width: 1180px;
+  margin: 2rem auto 0;
+  color: rgba(36, 50, 55, 0.42);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-align: right;
+}
+
+.cinematic-theme .gallery-item__overlay {
+  background: linear-gradient(0deg, rgba(16, 25, 30, 0.5), transparent 55%);
+}
+
+.cinematic-theme .location-section {
+  background: var(--film-paper);
+}
+
+.cinematic-theme .location-card {
+  border-left-color: var(--film-copper);
+}
+
+.cinematic-theme .directions-btn {
+  border-color: var(--film-ink);
+  color: var(--film-ink);
+}
+
+.cinematic-theme .directions-btn::before {
+  background: var(--film-night);
+}
+
+.cinematic-theme .rsvp-section {
+  background: #cfd2cb;
+}
+
+.cinematic-theme .rsvp-form__input,
+.cinematic-theme .rsvp-form__select,
+.cinematic-theme .rsvp-form__textarea {
+  border-bottom-color: rgba(24, 36, 42, 0.35);
+}
+
+.cinematic-theme .rsvp-submit-btn,
+.cinematic-theme .qr-btn {
+  background: var(--film-night);
+  border-color: var(--film-night);
+}
+
+.cinematic-theme .rsvp-submit-btn:hover,
+.cinematic-theme .qr-btn:hover {
+  background: var(--film-copper);
+}
+
+.cinematic-theme .footer {
+  background: var(--film-night-deep);
+}
+
+.cinematic-theme .footer__quote,
+.cinematic-theme .footer__date,
+.cinematic-theme .footer__ornament-top,
+.cinematic-theme .footer__ornament {
+  color: var(--film-copper-light);
+}
+
+@media (max-width: 699px) {
+  .cinematic-theme .hero__content { padding-left: 0.9rem; }
+  .cinematic-theme .story-intro__image { box-shadow: 10px 10px 0 rgba(24, 36, 42, 0.1); }
+}
+
+/* ============================================================
    INVITATION COVER
 ============================================================ */
 .opening {
