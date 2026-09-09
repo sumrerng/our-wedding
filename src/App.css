@@ -175,7 +175,29 @@ h1 em, h2 em { font-style: normal; font-weight: 400; }
   .panel-rsvp .rsvp-curve { bottom: 25%; left: 45%; width: 80%; }
 }
 @media (max-width: 900px) { .invitation { padding: 0 12px; } .masthead { grid-template-columns: 1fr auto 1fr; gap: 10px; } .masthead .rule { display: none; } .masthead span { font-size: 5px; } .masthead span:last-child { text-align: right; } .masthead p { font-size: 19px; letter-spacing: 3px; } .panel { min-height: 91vh; height: 91vh; } .panel-gallery { padding-top: 8vh; } .gallery-heading { display: block; padding: 0 7%; margin-bottom: 28px; } .gallery-heading h2 { font-size: 57px; } .gallery-controls { position: absolute; right: 7%; bottom: 0; } .gallery-track { gap: 10px; padding: 0 7% 20px; } .gallery-track figure { flex-basis: 72vw; height: 54vh; } .gallery-track figure:nth-child(2n) { margin-top: 0; } }
-@media (max-width: 580px) { .masthead { display: block; text-align: center; } .masthead span { display: none; } .masthead p { font-size: 20px; white-space: normal; letter-spacing: 2px; line-height: 1.1; } .panel { min-height: 91vh; height: 91vh; } .portrait-full { height: 58vh; } .portrait-close, .portrait-stage { height: 52vh; } .panel-details { min-height: 91vh; } .rsvp-curve { bottom: 234px; } .gallery-heading h2 { font-size: 52px; } .gallery-controls button { width: 40px; height: 40px; } .orbit-orbit { left: -12%; top: 28%; width: 124%; height: 34%; } }
+@media (max-width: 580px) {
+  .masthead { display: block; height: 76px; min-height: 76px; padding: 13px 28px 8px; text-align: center; }
+  .masthead span { display: none; }
+  .masthead p { font-size: 18px; white-space: normal; letter-spacing: 2px; line-height: 1.08; }
+  .panel { min-height: 91vh; height: 91vh; }
+  .panel-intro { min-height: calc(100svh - 76px); height: calc(100svh - 76px); margin-bottom: 0; border-radius: 0; }
+  .panel-intro .eyebrow { top: 55px; left: 10%; font-size: 7px; letter-spacing: 3px; }
+  .panel-intro .intro-copy { position: absolute; inset: 0; z-index: 3; padding: 111px 8% 0; pointer-events: none; }
+  .panel-intro .intro-copy > p { font-size: 13px; }
+  .panel-intro .mobile-title { font-size: clamp(54px, 15vw, 76px); line-height: .78; letter-spacing: -2px; }
+  .panel-intro .mobile-title em { display: inline-block; }
+  .panel-intro .portrait-full { position: absolute; z-index: 1; inset: auto 0 0; width: 100%; height: 72%; margin: 0; object-position: 50% 22%; mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%); }
+  .panel-intro .orbit-orbit { z-index: 2; left: -12%; top: 38%; width: 124%; height: 29%; }
+  .panel-intro .panel-footer { bottom: 24px; gap: 6px; }
+  .panel-intro .panel-footer p { display: block; font-size: 11px; }
+  .panel-intro .panel-footer strong { display: block; font-size: 15px; }
+  .panel-intro .panel-footer button { padding: 13px 25px; font-size: 12px; }
+  .portrait-close, .portrait-stage { height: 52vh; }
+  .panel-details { min-height: 91vh; }
+  .rsvp-curve { bottom: 234px; }
+  .gallery-heading h2 { font-size: 52px; }
+  .gallery-controls button { width: 40px; height: 40px; }
+}
 @media (max-width: 580px) { .music-toggle { right: 14px; bottom: 14px; padding: 8px 10px; } .music-toggle span { display: none; } }
 @keyframes soft-reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes orbit-star { from { offset-distance: 0%; } to { offset-distance: 100%; } }
