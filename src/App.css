@@ -190,6 +190,8 @@ h1 em, h2 em { font-style: normal; font-weight: 400; }
   .panel-intro .panel-footer p { display: block; font-size: 13px; letter-spacing: 4px; }
   .panel-intro .panel-footer strong { display: block; font-size: 19px; letter-spacing: 6px; }
   .panel-intro .panel-footer button { padding: 13px 25px; font-size: 12px; }
+  .panel-rsvp.is-form-open { height: auto; min-height: 100svh; overflow: visible; }
+  .panel-rsvp.is-form-open .rsvp-copy { padding-bottom: 42px; }
   .panel-grid { gap: 0; scroll-snap-type: y mandatory; }
   .portrait-close, .portrait-stage { height: 52vh; }
   .panel-details { min-height: 91vh; }
