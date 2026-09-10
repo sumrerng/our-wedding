@@ -45,6 +45,26 @@ function App() {
     setMusicOn(true)
   }
 
+  useEffect(() => {
+    let fallbackAdded = false
+    const resumeMusic = () => {
+      startMusic().catch(() => {})
+    }
+    const addFallback = () => {
+      if (fallbackAdded) return
+      fallbackAdded = true
+      document.addEventListener('pointerdown', resumeMusic, { once: true })
+      document.addEventListener('keydown', resumeMusic, { once: true })
+    }
+
+    startMusic().catch(addFallback)
+    return () => {
+      document.removeEventListener('pointerdown', resumeMusic)
+      document.removeEventListener('keydown', resumeMusic)
+      musicRef.current?.pause()
+    }
+  }, [])
+
   const toggleMusic = async () => {
     try {
       if (!musicRef.current) {
