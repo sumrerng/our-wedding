@@ -3,6 +3,7 @@ import './App.css'
 import locationsPhoto from '../images/locations.jpg'
 import ceremonyImage from '../images/ceremony-1500.png'
 import receptionImage from '../images/reception-1800.png'
+import weddingMusic from '../music.mp3'
 
 const uploadedPhotoEntries = import.meta.glob('./assets/optimized/*.{jpg,JPG}', { eager: true, query: '?url', import: 'default' })
 const uploadedPhotos = Object.values(uploadedPhotoEntries)
@@ -33,50 +34,31 @@ function App() {
     return () => document.documentElement.classList.remove('rsvp-form-open')
   }, [rsvpOpen])
 
-  const startAmbientMusic = () => {
-    if (musicRef.current) return
-    const AudioContext = window.AudioContext || window.webkitAudioContext
-    if (!AudioContext) return
-    const context = new AudioContext()
-    const master = context.createGain()
-    master.gain.setValueAtTime(0, context.currentTime)
-    master.gain.linearRampToValueAtTime(0.055, context.currentTime + 1.8)
-    master.connect(context.destination)
-    const notes = [261.63, 329.63, 392, 523.25, 392, 329.63]
-    let step = 0
-    const playNote = () => {
-      const oscillator = context.createOscillator()
-      const gain = context.createGain()
-      oscillator.type = 'sine'
-      oscillator.frequency.value = notes[step % notes.length]
-      gain.gain.setValueAtTime(0, context.currentTime)
-      gain.gain.linearRampToValueAtTime(0.16, context.currentTime + 0.12)
-      gain.gain.exponentialRampToValueAtTime(0.001, context.currentTime + 2.8)
-      oscillator.connect(gain)
-      gain.connect(master)
-      oscillator.start()
-      oscillator.stop(context.currentTime + 3)
-      step += 1
+  const startMusic = async () => {
+    if (!musicRef.current) {
+      const audio = new Audio(weddingMusic)
+      audio.loop = true
+      audio.volume = 0.45
+      musicRef.current = audio
     }
-    playNote()
-    const interval = window.setInterval(playNote, 1500)
-    musicRef.current = { context, master, interval }
+    await musicRef.current.play()
     setMusicOn(true)
   }
 
-  const toggleMusic = () => {
-    if (!musicRef.current) {
-      startAmbientMusic()
-      return
-    }
-    const { context, master } = musicRef.current
-    if (musicOn) {
-      master.gain.setTargetAtTime(0, context.currentTime, 0.2)
+  const toggleMusic = async () => {
+    try {
+      if (!musicRef.current) {
+        await startMusic()
+        return
+      }
+      if (musicOn) {
+        musicRef.current.pause()
+        setMusicOn(false)
+      } else {
+        await startMusic()
+      }
+    } catch {
       setMusicOn(false)
-    } else {
-      context.resume()
-      master.gain.setTargetAtTime(0.055, context.currentTime, 0.2)
-      setMusicOn(true)
     }
   }
 
