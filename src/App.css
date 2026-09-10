@@ -77,6 +77,8 @@ h1 em, h2 em { font-style: normal; font-weight: 400; }
 .details-date small::before, .details-date small::after { display: none; }
 .details-date > div { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; padding: 2px 0; background: linear-gradient(var(--line), var(--line)) left top / calc(50% - 42px) 1px no-repeat, linear-gradient(var(--line), var(--line)) left bottom / calc(50% - 42px) 1px no-repeat, linear-gradient(var(--line), var(--line)) right top / calc(50% - 42px) 1px no-repeat, linear-gradient(var(--line), var(--line)) right bottom / calc(50% - 42px) 1px no-repeat; font-family: var(--numeral); letter-spacing: 3px; }
 .details-date span { display: flex; align-items: center; justify-content: center; gap: 9px; font-size: 13px; white-space: nowrap; }
+.details-date small, .details-date span { font-family: var(--numeral); }
+.details-date span:first-child, .details-date span:last-child { font-size: 15px; line-height: 1; }
 .details-date span:first-child::before, .details-date span:last-child::after { display: none; }
 .details-date strong { font: 400 58px/.8 var(--numeral); letter-spacing: 1px; }
 .details-date > p { margin: 14px 0 0; font-size: 12px; letter-spacing: .5px; }
@@ -235,8 +237,10 @@ h1 em, h2 em { font-style: normal; font-weight: 400; }
   .panel-details .details-mark span:last-child { margin-left: 0; }
   .panel-details > .eyebrow.right { top: 22px; right: 25px; font-size: 8px; line-height: 1.45; letter-spacing: 4px; }
   .panel-details .details-date { margin-top: 20px; margin-bottom: 18px; }
-  .panel-details .calendar-button { gap: 9px; margin-top: 14px; padding-bottom: 7px; font-size: 13px; }
-  .panel-details .calendar-icon { width: 24px; height: 24px; }
+  .panel-details .details-date > p, .panel-details .timeline p, .panel-details .venue { font-family: var(--sans); }
+  .panel-details .timeline small, .panel-details .venue small { font-family: var(--numeral); }
+  .panel-details .calendar-button { gap: 7px; margin-top: 10px; padding-bottom: 5px; font-size: 11px; }
+  .panel-details .calendar-icon { width: 20px; height: 20px; }
   .panel-details .timeline { grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0 20px; }
   .panel-details .timeline-icon { width: 44px; height: 44px; margin-bottom: 5px; }
   .panel-details .timeline-image { width: 86px; height: 86px; margin: -19px auto -4px; }
